@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class LessonTabs
+export default class LessonTab
     extends React.Component {
     render() { return(
         <ul class="nav nav-tabs">

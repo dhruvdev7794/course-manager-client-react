@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CourseList from './CourseList';
+import CourseEditor from './CourseEditor';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 
