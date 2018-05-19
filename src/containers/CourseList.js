@@ -12,9 +12,12 @@ class CourseList extends React.Component {
    }
 
     componentDidMount() {
+        this.findAllCourses();
+    }
+
+    findAllCourses(){
         this.courseService.findAllCourses()
             .then((courses) => {
-                console.log(courses)
                 this.setState({courses: courses});
             });
     }
@@ -34,7 +37,9 @@ class CourseList extends React.Component {
     }
 
     createCourse(event){
-        console.log(this.state.course);
+        this.courseService
+            .createCourse(this.state.course)
+            .then(this.findAllCourses())
     }
 
     render() {
