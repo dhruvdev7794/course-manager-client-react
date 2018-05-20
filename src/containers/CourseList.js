@@ -34,9 +34,7 @@ class CourseList extends React.Component {
             return <CourseRow course={course} key={course.id}
                               delete={this.deleteCourse}/>
         });
-        return (
-            rows
-        )
+        return rows;
     }
     titleChanged(event){
         this.setState({

@@ -3,10 +3,11 @@ import ModuleListItem from '../component/ModuleListItem';
 
 export default class ModuleList
     extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             module: {title:""},
+            courseId: '',
             modules: [
                 {title: 'Module 1 - jQuery', id: 123},
                 {title: 'Module 2 - React', id: 234},
@@ -16,12 +17,23 @@ export default class ModuleList
                 {title: 'Module 6 - MongoDB', id: 678}
             ]
         };
+        this.setCourseId = this.setCourseId.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
         this.createModule = this.createModule.bind(this);
     }
+    setCourseId(courseId) {
+        this.setState({courseId: courseId});
+    }
+    componentDidMount() {
+        this.setCourseId(this.props.courseId);
+    }
+    componentWillReceiveProps(newProps){
+        this.setCourseId(newProps.courseId);
+    }
+
     renderListOfModules(){
-        let modules = this.state.modules.map(function (module) {
-            return <ModuleListItem key = {module.id} title = {module.title}/>
+        var modules = this.state.modules.map((module) => {
+            return <ModuleListItem key = {module.id} title = {module.title}  courseId = {this.state.courseId}/>
         });
         return modules;
     }
@@ -36,6 +48,8 @@ export default class ModuleList
     render(){
         return(
             <div>
+                <h4>Module of course ID:
+                    {this.state.courseId}</h4>
                 <input className="form-control"
                        onChange={this.titleChanged}
                        placeholder="title"/>
