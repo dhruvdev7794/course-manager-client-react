@@ -11,7 +11,7 @@ class CourseRow extends React.Component {
 
     render() {
         return (
-            <div className="card">
+            <div className="card bg-light mb-3">
                 <div className="card-body">
                     <Link to={`/course/${this.props.course.id}/edit`}>
                         <div className="row">
