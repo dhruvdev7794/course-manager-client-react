@@ -7,7 +7,7 @@ export default class ModuleList
     constructor(props){
         super(props);
         this.state = {
-            module: {title:""},
+            module: {title:"", id:""},
             courseId: '',
             modules: [
                 {title: 'Module 1 - jQuery', id: 123}
@@ -16,8 +16,13 @@ export default class ModuleList
         this.setCourseId = this.setCourseId.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
         this.createModule = this.createModule.bind(this);
+        this.deleteModule = this.deleteModule.bind(this);
         this.moduleService = ModuleService.instance;
     }
+    deleteModule(moduleId){
+        console.log(moduleId);
+    }
+
     setModules(modules) {
         this.setState({modules: modules})
     }
@@ -43,7 +48,10 @@ export default class ModuleList
     renderListOfModules(){
         if(this.state.modules!=undefined){
             var modules = this.state.modules.map((module) => {
-                return <ModuleListItem key = {module.id} title = {module.title}  courseId = {this.state.courseId}/>
+                return <ModuleListItem key = {module.id} title = {module.title}
+                                       module = {module}
+                                       delete={this.deleteModule}
+                                       courseId = {this.state.courseId}/>
             });
             return modules;
         }
