@@ -12,6 +12,7 @@ class CourseService {
             this[_singleton] = new CourseService(_singleton);
         return this[_singleton]
     }
+
     createCourse(course) {
         return fetch(COURSE_API_URL, {
             body: JSON.stringify(course),

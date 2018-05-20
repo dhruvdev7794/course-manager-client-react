@@ -42,5 +42,15 @@ export default class ModuleService {
         })
     }
 
+    findAllModules(){
+
+    }
+    findModuleById(moduleId){
+
+    }
+    updateModule(moduleId){
+
+    }
+
 
 }
