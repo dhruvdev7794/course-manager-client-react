@@ -40,5 +40,15 @@ class CourseService {
         })
     }
 
+    editCourse(courseId){
+        return fetch(COURSE_API_URL + '/' + courseId,
+            {
+                method: 'PUT'
+            }).then(function (response) {
+            // return response.json();
+        })
+
+    }
+
 }
 export default CourseService;
