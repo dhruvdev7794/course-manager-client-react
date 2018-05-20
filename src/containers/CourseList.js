@@ -7,8 +7,15 @@ class CourseList extends React.Component {
        super();
        this.courseService = CourseService.instance;
        this.state = {courses: []};
+       this.deleteCourse = this.deleteCourse.bind(this);
        this.titleChanged = this.titleChanged.bind(this);
        this.createCourse = this.createCourse.bind(this);
+   }
+
+    deleteCourse(courseId) {
+       this.courseService
+           .deleteCourse(courseId)
+           .then(this.findAllCourses());
    }
 
     componentDidMount() {
@@ -23,11 +30,12 @@ class CourseList extends React.Component {
     }
 
     courseRow(){
-       let courses = this.state.courses.map(function (course) {
-           return <CourseRow key={course.id} course = {course}/>;
-       });
+        var rows = this.state.courses.map((course) => {
+            return <CourseRow course={course} key={course.id}
+                              delete={this.deleteCourse}/>
+        });
         return (
-            courses
+            rows
         )
     }
     titleChanged(event){
@@ -42,31 +50,58 @@ class CourseList extends React.Component {
             .then(this.findAllCourses())
     }
 
+
+
     render() {
        return (
            <div>
-             <h2>Course List</h2>
-             <table>
-               <thead>
-               <tr>
-                   <th>Title</th>
-               </tr>
-               <tr>
-                   <th><input className="form-control" id="titleFld"
+               <nav className="navbar navbar-light fixed-top navbar-expand-lg">
+                   <div className="container">
+                       <a className="navbar-brand color-white" href="#">Course Manager</a>
+                       <input className="form-control" id="titleFld"
                               onChange={this.titleChanged}
-                              placeholder="cs101"/></th>
-                   <th>
-                       <button className="btn btn-primary"
-                                onClick={this.createCourse}>
-                       Add
+                              placeholder="New Course Title: "/>
+                       <button className="fa fa-plus fa-2x plusButton"
+                               onClick={this.createCourse}>
                        </button>
-                   </th>
-               </tr>
-               </thead>
-               <tbody>
+                       {/*<h2>Course Manager</h2>*/}
+
+                   </div>
+               </nav>
+            <div className="container top-pad">
+             {/*<table className="table list-of-items">*/}
+               {/*<thead>*/}
+               {/*<tr>*/}
+                   {/*<th>Title</th>*/}
+               {/*</tr>*/}
+               {/*<tr>*/}
+                   {/*<th><input className="form-control" id="titleFld"*/}
+                              {/*onChange={this.titleChanged}*/}
+                              {/*placeholder="cs101"/></th>*/}
+                   {/*<th>*/}
+                       {/*<button className="btn btn-primary"*/}
+                                {/*onClick={this.createCourse}>*/}
+                       {/*Add*/}
+                       {/*</button>*/}
+                   {/*</th>*/}
+               {/*</tr>*/}
+               {/*</thead>*/}
+               {/*<tbody>*/}
                {this.courseRow()}
-               </tbody>
-             </table>
+               {/*</tbody>*/}
+             {/*</table>*/}
+
+
+
+
+             {/*<div className="card">*/}
+                 {/*<div className="card-body">*/}
+                     {/*{this.courseRow()}*/}
+                 {/*</div>*/}
+             {/*</div>*/}
+
+
+            </div>
            </div>
        )
    }
