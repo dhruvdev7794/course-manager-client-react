@@ -20,7 +20,7 @@ export default class ModuleList
         this.moduleService = ModuleService.instance;
     }
     deleteModule(moduleId){
-        console.log(moduleId);
+        this.moduleService.deleteModule(moduleId);
     }
 
     setModules(modules) {
