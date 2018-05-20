@@ -22,13 +22,12 @@ export default class CourseEditor extends React.Component{
     render(){
         return(
             <div>
-                <h3>Course {this.state.courseId}</h3>
                 <div className="row">
-                    <div className="col-4">
+                    <div className="col-4 top-pad">
                         <ModuleList
                             courseId = {this.state.courseId}/>
                     </div>
-                    <div className="col-8">
+                    <div className="col-8 top-pad">
                         <LessonTab/>
                     </div>
                 </div>
