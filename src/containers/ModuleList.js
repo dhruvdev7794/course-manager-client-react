@@ -69,13 +69,13 @@ export default class ModuleList
     render(){
         return(
             <div>
-                <nav className="navbar navbar-light fixed-top navbar-expand-lg">
+                <nav className="navbar navbar-light navbar-expand">
                     <div className="container">
                         <a className="navbar-brand color-white" href="#">Module: {this.state.courseId}</a>
                         <input className="form-control" id="titleFld"
                                onChange={this.titleChanged}
                                placeholder="New Course Title: "/>
-                        <button className="fa fa-plus fa-2x plusButton"
+                        <button className="fa fa-plus plusButton"
                                 onClick={this.createModule}>
                         </button>
                     </div>
