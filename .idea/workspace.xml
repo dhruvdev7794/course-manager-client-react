@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fced6b54-e8bd-4e6c-8027-7aa8d0646fab" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/component/CourseRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/CourseRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ModuleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ModuleList.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -64,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModuleList.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ModuleList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/ModuleList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="688">
+              <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -97,7 +97,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CourseRow.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CourseRow.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/CourseRow.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
@@ -123,8 +123,8 @@
       <find>inpu</find>
       <find>deleteCoursedeleteCourse</find>
       <find>class</find>
-      <find>props</find>
       <find>deleteCourse</find>
+      <find>props</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -134,7 +134,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/component/ModuleListItem.js" />
-        <option value="$PROJECT_DIR$/src/containers/ModuleList.js" />
         <option value="$PROJECT_DIR$/src/containers/CourseEditor.js" />
         <option value="$PROJECT_DIR$/src/containers/CourseManager.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
@@ -143,6 +142,7 @@
         <option value="$PROJECT_DIR$/src/services/CourseService.js" />
         <option value="$PROJECT_DIR$/src/containers/CourseList.js" />
         <option value="$PROJECT_DIR$/src/component/CourseRow.js" />
+        <option value="$PROJECT_DIR$/src/containers/ModuleList.js" />
       </list>
     </option>
   </component>
@@ -246,12 +246,12 @@
       <workItem from="1526765872591" duration="975000" />
       <workItem from="1526767380384" duration="433000" />
       <workItem from="1526767843260" duration="3337000" />
-      <workItem from="1526773806876" duration="5669000" />
+      <workItem from="1526773806876" duration="6022000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10414000" />
+    <option name="totallyTimeSpent" value="10767000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="857" extended-state="0" />
@@ -370,16 +370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/ModuleList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -444,6 +434,16 @@
           <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/ModuleList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
