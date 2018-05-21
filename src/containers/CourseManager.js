@@ -13,7 +13,12 @@ class CourseManager extends Component {
                             component={CourseList}>
                     </Route>
                     <Route path = "/course/:courseId/edit"
-                            component = {CourseEditor}/>
+                            component = {CourseEditor}>
+                    </Route>
+                    <Route path = "/course/:courseId/module/:moduleId/lesson"
+                           component = {CourseEditor}>
+                    </Route>
+
                 </div>
             </Router>
         )

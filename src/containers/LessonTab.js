@@ -7,6 +7,7 @@ export default class LessonTab
 
     constructor(props){
         super(props);
+        console.log(props);
         this.state = {
             moduleId: '',
             lessons : [
@@ -14,9 +15,9 @@ export default class LessonTab
                 {title : "Lesson2", id: 2}
             ]
         };
-
+        this.setCourseId = this.setCourseId.bind(this);
         this.setModuleId = this.setModuleId.bind(this);
-        this.LessonService = LessonService.instance
+        this.LessonService = LessonService.instance;
 
     }
 
@@ -27,12 +28,15 @@ export default class LessonTab
 
     findAllLessonsForModule(moduleId){
         console.log(moduleId);
-        // this.LessonService
-        //     .findAllLessonssForModule(moduleId)
-        //     .then((lessons) => {this.setLessons(lessons)});
+        this.LessonService
+            .findAllLessonssForModule(moduleId)
+            .then((lessons) => {this.setLessons(lessons)});
     }
     setModuleId(moduleId) {
         this.setState({moduleId: moduleId});
+    }
+    setCourseId(courseId) {
+        this.setState({courseId: courseId});
     }
 
 
@@ -40,7 +44,8 @@ export default class LessonTab
         this.setModuleId(this.props.moduleId);
     }
     componentWillReceiveProps(newProps){
-        this.setModuleId(newProps.moduleId)
+        this.setModuleId(newProps.moduleId);
+        this.setCourseId(newProps.courseId);
         this.findAllLessonsForModule(newProps.moduleId);
     }
 

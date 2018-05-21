@@ -6,6 +6,7 @@ export default class ModuleList
     extends React.Component {
     constructor(props){
         super(props);
+
         this.state = {
             module: {title:"", id:""},
             courseId: '',
