@@ -1,16 +1,17 @@
 import React from 'react'
 import ModuleList from './ModuleList'
 import LessonTab from './LessonTab'
+import CourseService from '../services/CourseService';
 
 export default class CourseEditor extends React.Component{
 
     constructor(props){
         super(props);
-        // console.log(props.match.params.courseId);
-        // console.log(props.match.params.moduleId);
-        this.state = {courseId: ''};
+        this.state = {courseId: '', courseTitle:'', moduleId:''};
         this.selectCourse = this.selectCourse.bind(this);
         this.selectModule = this.selectModule.bind(this);
+        /*this.selectCourseTitle = this.selectCourseTitle.bind(this);*/
+        this.courseService = CourseService.instance;
 
     }
 
@@ -22,8 +23,18 @@ export default class CourseEditor extends React.Component{
     selectModule(moduleId){
         this.setState({moduleId: moduleId});
     }
+    /*selectCourseTitle(title){
+        this.setState({courseTitle: title});
+    }
+    */
     selectCourse(courseId) {
        this.setState({courseId: courseId});
+       /*
+       this.courseService.findCourseById(courseId)
+       .then(function(response){
+            this.selectCourseTitle(response.title);
+       });
+       */
     }
     render(){
         return(
