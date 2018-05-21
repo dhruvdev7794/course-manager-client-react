@@ -10,7 +10,7 @@ class LessonService {
 
     static get instance() {
         if (!this[_singleton])
-            this[_singleton] = new CourseService(_singleton);
+            this[_singleton] = new LessonService(_singleton);
         return this[_singleton]
     }
 
@@ -26,7 +26,7 @@ class LessonService {
     findLessonById(lessonId){
 
     }
-    findAllLessonssForModule(){
+    findAllLessonssForModule(moduleId){
 
     }
     updateLesson(lessonId){
