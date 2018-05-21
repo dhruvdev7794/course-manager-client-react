@@ -17,7 +17,11 @@ export default class LessonTab
         this.titleChanged = this.titleChanged.bind(this);
         this.createLesson = this.createLesson.bind(this);
         this.setModuleId = this.setModuleId.bind(this);
+        this.deleteLesson = this.deleteLesson.bind(this);
         this.lessonService = LessonService.instance;
+    }
+    deleteLesson(lessonId){
+        this.lessonService.deleteLesson(lessonId);
     }
     setLessons(lessons){
         this.setState({lessons:lessons});
@@ -45,8 +49,6 @@ export default class LessonTab
         this.findAllLessonsForModule(newProps.courseId, newProps.moduleId);
     }
     createLesson(){
-        // console.log(this.props.moduleId);
-        // console.log(this.state.lesson);
         this.lessonService.createLesson(this.props.courseId, this.props.moduleId, this.state.lesson);
     }
     titleChanged(event) {
@@ -55,7 +57,9 @@ export default class LessonTab
     renderTabsOfLesson(){
         if(this.state.lessons!=undefined){
             var lessons = this.state.lessons.map((lesson) =>{
-                return <LessonTabItem title={lesson.title} key={lesson.id}/>
+                return <LessonTabItem title={lesson.title} key={lesson.id}
+                                      lesson = {lesson}
+                                      delete={this.deleteLesson}/>
             })
             return lessons;
         }

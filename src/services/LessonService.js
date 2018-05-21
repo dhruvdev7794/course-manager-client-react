@@ -25,7 +25,9 @@ export default class LessonService {
             })
     }
     deleteLesson(lessonId){
-
+        return fetch(LESSON_SMALL_API_URL+"/"+lessonId,{
+            method:'DELETE'
+        })
     }
     findAllLessons(){
 
