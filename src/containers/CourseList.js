@@ -57,9 +57,9 @@ class CourseList extends React.Component {
 
     createCourse(event){
        console.log(this.state.course);
-        // this.courseService
-        //     .createCourse(this.state.course)
-        //     .then(this.findAllCourses())
+        this.courseService
+            .createCourse(this.state.course)
+            .then(this.findAllCourses())
     }
 
 

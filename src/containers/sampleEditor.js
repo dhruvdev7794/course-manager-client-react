@@ -2,14 +2,15 @@ import React from 'react'
 import ModuleList from './ModuleList'
 import CourseService from '../services/CourseService';
 import ModuleEditor from "./ModuleEditor";
-
+let self;
 export default class CourseEditor extends React.Component{
     constructor(props){
         super(props);
+        self = this;
         this.state = {courseId: '', courseTitle:'', moduleId:''};
         this.selectCourse = this.selectCourse.bind(this);
         this.selectModule = this.selectModule.bind(this);
-        /*this.selectCourseTitle = this.selectCourseTitle.bind(this);*/
+        this.selectCourseTitle = this.selectCourseTitle.bind(this);
         this.courseService = CourseService.instance;
 
     }
@@ -22,18 +23,17 @@ export default class CourseEditor extends React.Component{
     selectModule(moduleId){
         this.setState({moduleId: moduleId});
     }
-    /*selectCourseTitle(title){
+    selectCourseTitle(title){
         this.setState({courseTitle: title});
     }
-    */
+
     selectCourse(courseId) {
         this.setState({courseId: courseId});
-        /*
         this.courseService.findCourseById(courseId)
         .then(function(response){
-             this.selectCourseTitle(response.title);
+            self.selectCourseTitle(response.title);
         });
-        */
+
     }
     render(){
         if(this.state.moduleId!=undefined){
