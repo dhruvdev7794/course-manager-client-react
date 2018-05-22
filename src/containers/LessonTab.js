@@ -7,7 +7,6 @@ export default class LessonTab
 
     constructor(props){
         super(props);
-        console.log(props);
         this.state = {
             moduleId: '',
             lessons : [

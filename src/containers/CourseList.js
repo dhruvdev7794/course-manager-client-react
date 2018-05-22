@@ -26,7 +26,7 @@ class CourseList extends React.Component {
        // this.courseService
        //     .editCourse(courseId)
        //     .then(this.findAllCourses());
-       console.log(this.state);
+       // console.log(this.state);
    }
 
     componentDidMount() {
@@ -56,7 +56,6 @@ class CourseList extends React.Component {
     }
 
     createCourse(event){
-       console.log(this.state.course);
         this.courseService
             .createCourse(this.state.course)
             .then(this.findAllCourses())

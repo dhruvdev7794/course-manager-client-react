@@ -65,8 +65,12 @@ export default class CourseEditor extends React.Component{
         else{
             return(
                 <div>
-                    <h3>Course {this.state.courseId}</h3>
-                    <div className="row">
+                    <nav className="navbar navbar-light fixed-top navbar-expand-lg">
+                        <div className="container">
+                            <h3>Course : {this.state.courseTitle}</h3>
+                        </div>
+                    </nav>
+                    <div className="row top-pad">
                         <div className="col-4">
                             <ModuleList
                                 courseId = {this.state.courseId}/>

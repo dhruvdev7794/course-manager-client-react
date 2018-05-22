@@ -51,7 +51,6 @@ class CourseService {
 
     }
     findCourseById(courseId){
-        console.log(courseId);
         return fetch(COURSE_API_URL + '/' + courseId)
             .then(function (response) {
                 return response.json();

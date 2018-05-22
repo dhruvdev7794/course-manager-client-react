@@ -7,7 +7,7 @@ class CourseRow extends React.Component {
         // console.log(this.props);
         // this.deleteCourse = this.deleteCourse.bind(this);
     }
-    
+
     render() {
         var modifiedDate;
         if(this.props.course.modified!=null){
