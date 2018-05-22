@@ -1,11 +1,9 @@
 import React from 'react'
 import ModuleList from './ModuleList'
-import LessonTab from './LessonTab'
 import CourseService from '../services/CourseService';
 import ModuleEditor from "./ModuleEditor";
 
 export default class CourseEditor extends React.Component{
-
     constructor(props){
         super(props);
         this.state = {courseId: '', courseTitle:'', moduleId:''};
@@ -17,8 +15,8 @@ export default class CourseEditor extends React.Component{
     }
 
     componentDidMount() {
-       this.selectCourse(this.props.match.params.courseId);
-       this.selectModule(this.props.match.params.moduleId);
+        this.selectCourse(this.props.match.params.courseId);
+        this.selectModule(this.props.match.params.moduleId);
     }
 
     selectModule(moduleId){
@@ -29,13 +27,13 @@ export default class CourseEditor extends React.Component{
     }
     */
     selectCourse(courseId) {
-       this.setState({courseId: courseId});
-       /*
-       this.courseService.findCourseById(courseId)
-       .then(function(response){
-            this.selectCourseTitle(response.title);
-       });
-       */
+        this.setState({courseId: courseId});
+        /*
+        this.courseService.findCourseById(courseId)
+        .then(function(response){
+             this.selectCourseTitle(response.title);
+        });
+        */
     }
     render(){
         if(this.state.moduleId!=undefined){
@@ -67,7 +65,7 @@ export default class CourseEditor extends React.Component{
                         </div>
                         <div className="col-8">
                         </div>
-                     </div>
+                    </div>
                 </div>
             );
         }
