@@ -4,6 +4,7 @@ import LessonTab from './LessonTab'
 import CourseService from '../services/CourseService';
 import ModuleEditor from "./ModuleEditor";
 let self;
+
 export default class CourseEditor extends React.Component{
 
     constructor(props){
@@ -38,7 +39,7 @@ export default class CourseEditor extends React.Component{
 
     }
     render(){
-        if(this.state.moduleId!=undefined){
+        if(this.state.moduleId !== undefined && this.state.moduleId !== ""){
             return(
                 <div>
                     <nav className="navbar navbar-light fixed-top navbar-expand-lg">

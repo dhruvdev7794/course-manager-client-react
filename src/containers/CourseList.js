@@ -10,24 +10,16 @@ class CourseList extends React.Component {
        this.deleteCourse = this.deleteCourse.bind(this);
        this.titleChanged = this.titleChanged.bind(this);
        this.createCourse = this.createCourse.bind(this);
-       this.editCourse = this.editCourse.bind(this);
    }
 
     deleteCourse(courseId) {
        this.courseService
            .deleteCourse(courseId)
-           .then(this.findAllCourses());
+           .then(() => {
+               this.findAllCourses()
+           });
    }
 
-   editCourse(courseId){
-       this.state.isEdit = true;
-       // console.log(this.state.course);
-       // this.state.course.id = courseId;
-       // this.courseService
-       //     .editCourse(courseId)
-       //     .then(this.findAllCourses());
-       // console.log(this.state);
-   }
 
     componentDidMount() {
         this.findAllCourses();
@@ -43,9 +35,7 @@ class CourseList extends React.Component {
     courseRow(){
         var rows = this.state.courses.map((course) => {
             return <CourseRow course={course} key={course.id}
-                              delete={this.deleteCourse}
-                              edit={this.editCourse}
-                              isEdit={this.state.isEdit}/>
+                              delete={this.deleteCourse}/>
         });
         return rows;
     }
@@ -55,10 +45,17 @@ class CourseList extends React.Component {
         });
     }
 
-    createCourse(event){
-        this.courseService
+    createCourse(){
+       if(this.state.course === undefined){
+           this.state.course = {
+               title: "New Course"
+           };
+       }
+       this.courseService
             .createCourse(this.state.course)
-            .then(this.findAllCourses())
+            .then(() => {
+                this.findAllCourses();
+            });
     }
 
 
