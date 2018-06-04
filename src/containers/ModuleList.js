@@ -84,7 +84,7 @@ export default class ModuleList
                             <input className="form-control" id="titleFld"
                                    onChange={this.titleChanged}
                                    placeholder="New Course Title: "/>
-                            <button className="fa fa-plus plusButton"
+                            <button className="fa fa-plus headerButton"
                                     onClick={this.createModule}>
                             </button>
                         </div>

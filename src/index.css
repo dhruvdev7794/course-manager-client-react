@@ -1,7 +1,7 @@
 .navbar{
     background-color: #4285f4;
 }
-.plusButton{
+.headerButton{
     border:none;
     background-color: #4285f4;
 }
@@ -35,4 +35,8 @@ a:active {
 .width-18{
     width: 18rem;
     padding-top: 50px;
+}
+
+li.active{
+    color: yellow;
 }

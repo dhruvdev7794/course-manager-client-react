@@ -79,7 +79,7 @@ export default class LessonTab
                 <input id="inputIconEx2" className="form-control cross-float"
                        onChange={this.titleChanged}
                        placeholder="Enter the Lesson:"/>
-                <button className="fa fa-plus cross-float plusButton"
+                <button className="fa fa-plus cross-float headerButton"
                         onClick={this.createLesson}></button>
             </div>
             <ul className="nav nav-tabs">

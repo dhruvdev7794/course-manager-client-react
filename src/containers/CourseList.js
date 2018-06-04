@@ -1,15 +1,20 @@
 import React from 'react';
 import CourseRow from "../component/CourseRow";
 import CourseService from '../services/CourseService'
+let self
 class CourseList extends React.Component {
    constructor() {
 
        super();
        this.courseService = CourseService.instance;
-       this.state = {courses: []};
+       this.state = {
+           grid: false,
+           courses: []};
        this.deleteCourse = this.deleteCourse.bind(this);
        this.titleChanged = this.titleChanged.bind(this);
+       this.grid = false;
        this.createCourse = this.createCourse.bind(this);
+       self= this;
    }
 
     deleteCourse(courseId) {
@@ -34,7 +39,8 @@ class CourseList extends React.Component {
 
     courseRow(){
         var rows = this.state.courses.map((course) => {
-            return <CourseRow course={course} key={course.id}
+            return <CourseRow grid = {self.state.grid}
+                              course={course} key={course.id}
                               delete={this.deleteCourse}/>
         });
         return rows;
@@ -43,6 +49,14 @@ class CourseList extends React.Component {
         this.setState({
             course: { title: event.target.value }
         });
+    }
+    changeGrid(){
+
+       self.setState({
+           grid: !self.state.grid
+       });
+       // console.log(self.state.grid);
+       self.courseRow();
     }
 
     createCourse(){
@@ -61,57 +75,57 @@ class CourseList extends React.Component {
 
 
     render() {
-       return (
-           <div>
-               <nav className="navbar navbar-light fixed-top navbar-expand-lg">
-                   <div className="container">
-                       <a className="navbar-brand color-white" href="#">Course Manager</a>
-                       <input className="form-control" id="titleFld"
-                              onChange={this.titleChanged}
-                              placeholder="New Course Title: "/>
-                       <button className="fa fa-plus fa-2x plusButton"
-                               onClick={this.createCourse}>
-                       </button>
-                       {/*<h2>Course Manager</h2>*/}
+       if(self.state.grid){
+           return (
+               <div>
+                   <nav className="navbar navbar-light fixed-top navbar-expand-lg">
+                       <div className="container">
+                           <a className="navbar-brand color-white" href="#">Course Manager</a>
+                           <input className="form-control" id="titleFld"
+                                  onChange={this.titleChanged}
+                                  placeholder="New Course Title: "/>
+                           <button className="fa fa-plus fa-2x headerButton"
+                                   onClick={this.createCourse}>
+                           </button>
+                           <button className="fa fa-list fa-2x headerButton"
+                                   onClick={this.changeGrid}></button>
+                           {/*<h2>Course Manager</h2>*/}
 
+                       </div>
+                   </nav>
+                   <div className="container top-pad">
+                       <div className="card-deck">
+                           {this.courseRow()}
+                       </div>
                    </div>
-               </nav>
-            <div className="container top-pad">
-             {/*<table className="table list-of-items">*/}
-               {/*<thead>*/}
-               {/*<tr>*/}
-                   {/*<th>Title</th>*/}
-               {/*</tr>*/}
-               {/*<tr>*/}
-                   {/*<th><input className="form-control" id="titleFld"*/}
-                              {/*onChange={this.titleChanged}*/}
-                              {/*placeholder="cs101"/></th>*/}
-                   {/*<th>*/}
-                       {/*<button className="btn btn-primary"*/}
-                                {/*onClick={this.createCourse}>*/}
-                       {/*Add*/}
-                       {/*</button>*/}
-                   {/*</th>*/}
-               {/*</tr>*/}
-               {/*</thead>*/}
-               {/*<tbody>*/}
-               {this.courseRow()}
-               {/*</tbody>*/}
-             {/*</table>*/}
+               </div>
+           )
+       }
+       else{
+           return (
+               <div>
+                   <nav className="navbar navbar-light fixed-top navbar-expand-lg">
+                       <div className="container">
+                           <a className="navbar-brand color-white" href="#">Course Manager</a>
+                           <input className="form-control" id="titleFld"
+                                  onChange={this.titleChanged}
+                                  placeholder="New Course Title: "/>
+                           <button className="fa fa-plus fa-2x headerButton"
+                                   onClick={this.createCourse}>
+                           </button>
+                           <button className="fa fa-th fa-2x headerButton"
+                                   onClick={this.changeGrid}></button>
+                           {/*<h2>Course Manager</h2>*/}
 
+                       </div>
+                   </nav>
+                   <div className="container top-pad">
+                           {this.courseRow()}
+                   </div>
+               </div>
+           )
+       }
 
-
-
-             {/*<div className="card">*/}
-                 {/*<div className="card-body">*/}
-                     {/*{this.courseRow()}*/}
-                 {/*</div>*/}
-             {/*</div>*/}
-
-
-            </div>
-           </div>
-       )
    }
 }
 export default CourseList;
