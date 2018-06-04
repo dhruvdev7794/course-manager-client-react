@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 export default class LessonTabItem extends React.Component{
@@ -9,8 +10,10 @@ export default class LessonTabItem extends React.Component{
     render(){
         return(
             <div>
-                <li className="nav-item"><a className="nav-link active"
-                                        href="#">{this.props.title}</a>
+                <li className="nav-item">
+                    <Link to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}/lesson`}>
+                            {this.props.title}
+                    </Link>
                     <i className="fa fa-trash cross-float"
                        onClick={()=>{this.props.delete(this.props.lesson.id)}}></i>
                 </li>

@@ -39,49 +39,18 @@ export default class CourseEditor extends React.Component{
 
     }
     render(){
-        if(this.state.moduleId !== undefined && this.state.moduleId !== ""){
-            return(
-                <div>
-                    <nav className="navbar navbar-light fixed-top navbar-expand-lg">
-                        <div className="container">
-                            <h3>Course : {this.state.courseTitle}</h3>
-
-                        </div>
-                    </nav>
-                    {/*<h3 className="heading-3-style">Course : {this.state.courseTitle}</h3>*/}
-                    <div className="row top-pad">
-                        <div className="col-4">
-                            <ModuleList
-                                courseId = {this.state.courseId}/>
-                        </div>
-                        <div className="col-8">
-                            <ModuleEditor
-                                courseId = {this.state.courseId}
-                                moduleId = {this.state.moduleId}/>
-                        </div>
-                    </div>
+        return(<div>
+            <nav className="navbar navbar-light fixed-top navbar-expand-lg">
+                <div className="container">
+                    <h3>Course : {this.state.courseTitle}</h3>
                 </div>
-            );
-        }
-        else{
-            return(
-                <div>
-                    <nav className="navbar navbar-light fixed-top navbar-expand-lg">
-                        <div className="container">
-                            <h3>Course : {this.state.courseTitle}</h3>
-                        </div>
-                    </nav>
-                    <div className="row top-pad">
-                        <div className="col-4">
-                            <ModuleList
-                                courseId = {this.state.courseId}/>
-                        </div>
-                        <div className="col-8">
-                        </div>
-                     </div>
-                </div>
-            );
-        }
+            </nav>
+            <div className="top-pad">
+                <ModuleList
+                    courseId = {this.state.courseId}/>
+            </div>
+        </div>
+        );
 
     }
 }

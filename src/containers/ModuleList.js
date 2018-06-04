@@ -1,6 +1,8 @@
 import React from 'react'
 import ModuleListItem from '../component/ModuleListItem';
 import ModuleService from '../services/ModuleService';
+import ModuleEditor from "./ModuleEditor";
+import {Route} from 'react-router-dom'
 
 export default class ModuleList
     extends React.Component {
@@ -75,21 +77,31 @@ export default class ModuleList
     render(){
         return(
             <div>
-                <nav className="navbar navbar-light navbar-expand">
-                    <div className="container">
-                        <input className="form-control" id="titleFld"
-                               onChange={this.titleChanged}
-                               placeholder="New Course Title: "/>
-                        <button className="fa fa-plus plusButton"
-                                onClick={this.createModule}>
-                        </button>
+                <div className='row'>
+                <div className="col-4">
+                    <nav className="navbar navbar-light navbar-expand">
+                        <div className="container">
+                            <input className="form-control" id="titleFld"
+                                   onChange={this.titleChanged}
+                                   placeholder="New Course Title: "/>
+                            <button className="fa fa-plus plusButton"
+                                    onClick={this.createModule}>
+                            </button>
+                        </div>
+                    </nav>
+                    <div className="card">
+                        <ul className="list-group list-group-flush">
+                            {this.renderListOfModules()}
+                         </ul>
                     </div>
-                </nav>
-                <div className="card">
-                    <ul className="list-group list-group-flush">
-                        {this.renderListOfModules()}
-                    </ul>
                 </div>
+                <div className="col-8">
+                    <Route path="/course/:courseId/module/:moduleId/lesson"
+                            component={ModuleEditor}>
+                    </Route>
+                </div>
+                </div>
+
             </div>
         )
     }

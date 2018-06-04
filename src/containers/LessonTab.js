@@ -8,6 +8,7 @@ export default class LessonTab
     constructor(props){
         super(props);
         this.state = {
+            courseId: '',
             moduleId: '',
             lessons : [
             ]
@@ -53,7 +54,7 @@ export default class LessonTab
     createLesson(){
         this.lessonService.createLesson(this.props.courseId, this.props.moduleId, this.state.lesson)
             .then(() => {
-                this.findAllLessonsForModule();
+                this.findAllLessonsForModule(this.props.courseId, this.props.moduleId);
             });
     }
     titleChanged(event) {
@@ -71,7 +72,8 @@ export default class LessonTab
 
     }
 
-    render() { return(
+    render() {
+        return(
         <div>
             <div className="navbar navbar-expand-lg">
                 <input id="inputIconEx2" className="form-control cross-float"
