@@ -1,7 +1,7 @@
 import React from 'react';
 import CourseRow from "../component/CourseRow";
 import CourseService from '../services/CourseService'
-let self
+let self;
 class CourseList extends React.Component {
    constructor() {
 

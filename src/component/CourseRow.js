@@ -21,10 +21,9 @@ class CourseRow extends React.Component {
                 <div className="card bg-light">
                     <div className="card-body">
                         <Link to={`/course/${this.props.course.id}/edit`}>
-                            {/*<div className="row">*/}
-                                <div>{this.props.course.title}</div>
-                                <div>{modifiedDate}</div>
-                            {/*</div>*/}
+                            <div>{this.props.course.title}</div>
+                            <div>me</div>
+                            <div>{modifiedDate}</div>
                         </Link>
                         <div className="fa fa-trash"
                              onClick={() => {if(window.confirm("Are you sure you want to delete it?"))this.props.delete(this.props.course.id)}}>
@@ -40,6 +39,7 @@ class CourseRow extends React.Component {
                         <Link to={`/course/${this.props.course.id}/edit`}>
                             <div className="row">
                                 <div className="col">{this.props.course.title}</div>
+                                <div className="col"> me </div>
                                 <div className="col">{modifiedDate}</div>
                             </div>
                         </Link>

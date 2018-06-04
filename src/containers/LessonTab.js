@@ -18,12 +18,15 @@ export default class LessonTab
         this.createLesson = this.createLesson.bind(this);
         this.setModuleId = this.setModuleId.bind(this);
         this.deleteLesson = this.deleteLesson.bind(this);
+        this.setModuleId = this.setModuleId.bind(this);
+        this.setCourseId = this.setCourseId.bind(this);
+        this.setLessons = this.setLessons.bind(this);
         this.lessonService = LessonService.instance;
     }
     deleteLesson(lessonId){
         this.lessonService.deleteLesson(lessonId)
             .then(() => {
-                this.lessonService.findAllLessonsForModule(this.state.courseId, this.state.moduleId);
+                this.findAllLessonsForModule(this.state.courseId, this.state.moduleId);
             });
     }
     setLessons(lessons){

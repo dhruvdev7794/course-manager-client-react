@@ -38,9 +38,8 @@ export default class LessonService {
     findAllLessonsForModule(courseId, moduleId){
         return fetch(LESSON_API_URL.replace('cid', courseId).replace('mid', moduleId))
             .then(function (response) {
-                console.log(response.status)
                 if(response.status > 400){
-                    window.location.href="/course/"+courseId+"/edit"
+                    window.location.href="/course/"+courseId+"/edit";
                     return null;
                 }
                 return response.json();
