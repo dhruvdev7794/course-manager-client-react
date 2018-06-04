@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 class CourseRow extends React.Component {
     constructor(props){
         super(props);
-        // console.log(this.props);
-        // this.deleteCourse = this.deleteCourse.bind(this);
     }
 
     render() {
@@ -29,10 +27,6 @@ class CourseRow extends React.Component {
                     <div className="fa fa-trash cross-float"
                          onClick={() => {this.props.delete(this.props.course.id)}}>
                     </div>
-                    <div className="fa fa-pencil cross-float"
-                         onClick={() => {this.props.edit(this.props.course.id)}}>
-                    </div>
-
                 </div>
             </div>
         )
