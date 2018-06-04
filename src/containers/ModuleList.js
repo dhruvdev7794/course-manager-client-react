@@ -21,7 +21,11 @@ export default class ModuleList
         this.moduleService = ModuleService.instance;
     }
     deleteModule(moduleId){
-        this.moduleService.deleteModule(moduleId);
+        this.moduleService.deleteModule(moduleId)
+            .then(() => {
+                this.findAllModulesForCourse(this.props.courseId);
+            });
+
     }
 
     setModules(modules) {
@@ -62,8 +66,11 @@ export default class ModuleList
         this.setState({module: {title: event.target.value}});
     }
 
-    createModule(event){
-        this.moduleService.createModule(this.props.courseId, this.state.module);
+    createModule(){
+        this.moduleService.createModule(this.props.courseId, this.state.module)
+            .then(() => {
+                this.findAllModulesForCourse(this.props.courseId);
+            });
     }
     render(){
         return(
