@@ -14,7 +14,7 @@ export default class ModuleListItem extends React.Component{
                 </Link>
                 <span className="float-right">
                     <i className="fa fa-trash"
-                    onClick={()=>{this.props.delete(this.props.module.id)}}></i>
+                    onClick={()=>{if(window.confirm("Are you sure you want to delete it?"))this.props.delete(this.props.module.id)}}></i>
                     <i className="fa fa-pencil"></i>
                 </span>
             </li>

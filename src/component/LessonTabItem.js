@@ -15,7 +15,7 @@ export default class LessonTabItem extends React.Component{
                             {this.props.title}
                     </Link>
                     <i className="fa fa-trash cross-float"
-                       onClick={()=>{this.props.delete(this.props.lesson.id)}}></i>
+                       onClick={()=>{if(window.confirm("Are you sure you want to delete it?")) this.props.delete(this.props.lesson.id)}}></i>
                 </li>
             </div>
         );

@@ -25,7 +25,7 @@ class CourseRow extends React.Component {
                         </div>
                     </Link>
                     <div className="fa fa-trash cross-float"
-                         onClick={() => {this.props.delete(this.props.course.id)}}>
+                         onClick={() => {if(window.confirm("Are you sure you want to delete it?"))this.props.delete(this.props.course.id)}}>
                     </div>
                 </div>
             </div>
