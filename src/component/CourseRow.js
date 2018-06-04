@@ -15,10 +15,9 @@ class CourseRow extends React.Component {
         else{
             modifiedDate = "";
         }
-        console.log(this.props.grid);
         if(this.props.grid){
             return (
-                <div className="card bg-light">
+                <div className="card p-3 bg-light">
                     <div className="card-body">
                         <Link to={`/course/${this.props.course.id}/edit`}>
                             <div>{this.props.course.title}</div>

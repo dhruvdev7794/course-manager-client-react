@@ -69,6 +69,9 @@ export default class ModuleList
     }
 
     createModule(){
+        if(this.state.module.title ===""){
+            this.state.module.title = "New Module";
+        }
         this.moduleService.createModule(this.props.courseId, this.state.module)
             .then(() => {
                 this.findAllModulesForCourse(this.props.courseId);

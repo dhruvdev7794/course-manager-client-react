@@ -94,7 +94,7 @@ class CourseList extends React.Component {
                        </div>
                    </nav>
                    <div className="container top-pad">
-                       <div className="card-deck">
+                       <div className="card-columns">
                            {this.courseRow()}
                        </div>
                    </div>

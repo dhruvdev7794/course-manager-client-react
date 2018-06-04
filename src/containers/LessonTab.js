@@ -55,6 +55,9 @@ export default class LessonTab
         this.findAllLessonsForModule(newProps.courseId, newProps.moduleId);
     }
     createLesson(){
+        if(this.state.lesson === "" || this.state.lesson === undefined || this.state.lesson === null){
+            this.state.lesson = {title:"New Lesson"};
+        }
         this.lessonService.createLesson(this.props.courseId, this.props.moduleId, this.state.lesson)
             .then(() => {
                 this.findAllLessonsForModule(this.props.courseId, this.props.moduleId);
