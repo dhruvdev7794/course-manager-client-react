@@ -55,7 +55,6 @@ class CourseList extends React.Component {
        self.setState({
            grid: !self.state.grid
        });
-       // console.log(self.state.grid);
        self.courseRow();
     }
 
