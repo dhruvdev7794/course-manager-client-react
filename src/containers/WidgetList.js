@@ -1,28 +1,51 @@
-import React from 'react';
+import React, {Component} from "react";
+import {connect} from 'react-redux';
+import {WidgetContainer} from "../component/widget";
+import {addWidget,save, findAllWidgets} from "../actions";
 
-export default class WidgetList extends React.Component{
+class widgetList extends Component{
     constructor(props){
         super(props);
-    }
-
-    selectLesson(lessonId){
-        this.setState({lessonId: lessonId});
-    }
-
-    componentWillReceiveProps(newProps){
-        this.selectLesson(newProps.match.params.lessonId);
-    }
-    componentDidMount(){
-        this.selectLesson(this.props.match.params.lessonId);
+        this.props.findAllWidgets();
     }
 
     render(){
-        console.log(this.state);
         return(
-            <div className="container">
-                <h2>Widgets</h2>
-
+            <div>
+                <h1>
+                    Widget List {this.props.widgets.length}
+                </h1>
+                <button onClick={this.props.save}>
+                    Save
+                </button>
+                <h3>{this.props.lessonId}</h3>
+                <ul>
+                    {
+                        this.props.widgets.map(widget => (
+                            <WidgetContainer widget={widget} key={widget.id}/>
+                        ))
+                    }
+                </ul>
+                <button onClick={this.props.addWidget}> Add Widget
+                </button>
             </div>
         )
     }
+
 }
+
+const stateToPropertiesMapper = (state) => (
+    {
+        widgets : state.widgets
+    }
+);
+
+const dispatchToPropertiesMapper =  dispatch => ({
+    findAllWidgets: (lessonId) => findAllWidgets(dispatch),
+    addWidget: () => addWidget(dispatch),
+    save: () => save(dispatch)
+});
+
+export const App = connect(
+    stateToPropertiesMapper,
+    dispatchToPropertiesMapper) (widgetList);
