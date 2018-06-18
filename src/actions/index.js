@@ -1,7 +1,6 @@
-import {ADD_WIDGET, FIND_ALL_WIDGETS, SAVE} from "../constants";
+import {ADD_WIDGET, FIND_ALL_WIDGETS, HEADING_SIZE_CHANGED, SAVE, HEADING_TEXT_CHANGED} from "../constants";
 
 export const findAllWidgets = (dispatch, lessonId)=>{
-    console.log(lessonId);
     fetch("http://localhost:8080/api/lesson/"+lessonId+"/widget")
         .then(response => (response.json()))
         .then(widgets => dispatch({
@@ -22,3 +21,15 @@ export const save = (dispatch, lessonId)=> (
         lessonId: lessonId
     })
 );
+
+export const headingSizeChanged = (dispatch, widgetId, newSize) => {
+        dispatch({type: HEADING_SIZE_CHANGED,
+            widgetId: widgetId,
+            size: newSize});
+};
+
+export const headingTextChanged = (dispatch, widgetId, newText) => {
+    dispatch({type: HEADING_TEXT_CHANGED,
+        id: widgetId,
+        text : newText})
+};

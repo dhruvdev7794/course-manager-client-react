@@ -19,7 +19,7 @@ class widgetList extends Component{
                     Save
                 </button>
                 <h3>{this.props.lessonId}</h3>
-                <ul>
+                <ul className="wbdv-no-list-marker">
                     {
                         this.props.widgets.map(widget => (
                             <WidgetContainer widget={widget} key={widget.id}/>

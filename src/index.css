@@ -40,3 +40,10 @@ a:active {
 li.active{
     color: yellow;
 }
+
+.wbdv-no-list-marker{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
