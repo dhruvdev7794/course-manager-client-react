@@ -5,13 +5,23 @@ import {
     HEADING_SIZE_CHANGED,
     SAVE,
     SELECT_WIDGET_TYPE,
-    HEADING_TEXT_CHANGED, PREVIEW, CHANGE_URL_TEXT
+    HEADING_TEXT_CHANGED, PREVIEW, CHANGE_URL_TEXT, CHANGE_HREF_TEXT
 } from "../constants";
 
 let autoIncroment = 3;
 export const widgetReducer = (state = {widgets: [], preview: false}, action) => {
     let newState;
     switch (action.type){
+        case CHANGE_HREF_TEXT:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id){
+                        widget.href = action.href;
+                    }
+                    return Object.assign({}, widget)
+                })
+            };
+
         case CHANGE_URL_TEXT:
             // console.log(action);
             // console.log(state);
@@ -92,7 +102,8 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                         widgetType: 'Heading',
                         size: 1,
                         name: '',
-                        src:''
+                        src:'',
+                        href:''
 
                     }
                 ]

@@ -5,7 +5,7 @@ import {
     SAVE,
     HEADING_TEXT_CHANGED,
     PREVIEW,
-    CHANGE_URL_TEXT
+    CHANGE_URL_TEXT, CHANGE_HREF_TEXT
 } from "../constants";
 
 export const findAllWidgets = (dispatch, lessonId)=>{
@@ -52,4 +52,12 @@ export const urlChanged = (dispatch, widgetId, urlText) => {
         id: widgetId,
         urlText: urlText
     })
-}
+};
+
+export const hrefChanged = (dispatch, widgetId, href) => {
+    dispatch({
+        type: CHANGE_HREF_TEXT,
+        id: widgetId,
+        href: href
+    })
+};

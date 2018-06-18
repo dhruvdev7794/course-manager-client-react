@@ -6,6 +6,7 @@ import * as actions from '../actions/index';
 import {HeadingContainer} from './Heading';
 import {ParagraphContainer} from "./Paragraph";
 import {ImageContainer} from "./Image";
+import {LinkContainer} from "./Link"
 
 // ------------------------- List ---------------------- //
 
@@ -13,11 +14,6 @@ const List = () => (
     <h1>List</h1>
 );
 
-
-
-const Link = () => (
-    <h1>Link</h1>
-);
 
 // ----------------- Widget content --------------------//
 const Widget = ({widget, preview, dispatch}) => {
@@ -64,7 +60,7 @@ const Widget = ({widget, preview, dispatch}) => {
             {widget.widgetType === "Paragraph" && <ParagraphContainer widget={widget}/>}
             {widget.widgetType === "Image" && <ImageContainer widget={widget}/>}
             {widget.widgetType === "List" && <List widget={widget}/>}
-            {widget.widgetType === "Link" && <Link widget={widget}/>}
+            {widget.widgetType === "Link" && <LinkContainer widget={widget}/>}
 
         </li>
     )
