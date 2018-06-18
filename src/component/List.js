@@ -2,34 +2,36 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from "../actions";
 
-const List = ({widget, headingTextChanged}) => {
+const List = ({widget,preview, headingTextChanged}) => {
     let listInputElement;
     let listSelectElement;
 
     return(
         <div>
-            <h2>List Widget</h2>
-            <div className="input-group mb-3">
-                <div className="input-group-prepend">
-                    <span className="input-group-text">Enter Elements</span>
+            <div hidden={preview}>
+                <h2>List Widget</h2>
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text">Enter Elements</span>
+                    </div>
+                    <textarea className="form-control"
+                              value={widget.text}
+                              onChange={() => headingTextChanged(widget.id, listInputElement.value)}
+                              ref={node => listInputElement = node}
+                              aria-label="With textarea"/>
                 </div>
-                <textarea className="form-control"
-                          value={widget.text}
-                          onChange={() => headingTextChanged(widget.id, listInputElement.value)}
-                          ref={node => listInputElement = node}
-                          aria-label="With textarea"/>
-            </div>
-            <div className="input-group mb-3">
-                <div className="input-group-prepend">
-                    <span className="input-group-text">Select Order Type</span>
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text">Select Order Type</span>
+                    </div>
+                    <select
+                        ref={node=> listSelectElement = node}>
+                        <option>Ordered List</option>
+                        <option>Unordered List</option>
+                    </select>
                 </div>
-                <select
-                    ref={node=> listSelectElement = node}>
-                    <option>Ordered List</option>
-                    <option>Unordered List</option>
-                </select>
+                <h2> Preview </h2>
             </div>
-            <h2> Preview </h2>
             {covertToList(widget.text)}
         </div>
     )
