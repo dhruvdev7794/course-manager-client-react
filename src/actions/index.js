@@ -16,8 +16,9 @@ export const addWidget = dispatch =>(
     })
 );
 
-export const save = dispatch => (
+export const save = (dispatch, lessonId)=> (
     dispatch({
-        type: SAVE
+        type: SAVE,
+        lessonId: lessonId
     })
 );

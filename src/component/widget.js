@@ -3,11 +3,21 @@ import {DELETE_WIDGET, SELECT_WIDGET_TYPE} from "../constants";
 import {connect} from 'react-redux';
 
 const Heading = () => (
-    <h1>Heading</h1>
+    <div>
+        <h1>Heading</h1>
+        <select>
+            <option>Heading 1</option>
+            <option>Heading 2</option>
+            <option>Heading 3</option>
+        </select>
+    </div>
 );
 
 const Paragraph = () => (
-    <h1>Paragraph</h1>
+    <div>
+        <h1>Paragraph</h1>
+        <textarea></textarea>
+    </div>
 );
 
 const List = () => (

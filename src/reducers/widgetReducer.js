@@ -15,7 +15,7 @@ export const widgetReducer = (state = {widgets: []}, action) => {
             };
             return JSON.parse(JSON.stringify(newState));
         case SAVE:
-            fetch("http://localhost:8080/api/widget/save",{
+            fetch("http://localhost:8080/api/lesson/"+action.lessonId+"/widget/save",{
                 method: 'post',
                 body: JSON.stringify(state.widgets),
                 headers:{

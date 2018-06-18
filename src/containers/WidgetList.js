@@ -15,7 +15,7 @@ class widgetList extends Component{
                 <h1>
                     Widget List {this.props.widgets.length}
                 </h1>
-                <button onClick={this.props.save}>
+                <button onClick={() => {this.props.save(this.props.lessonId)}}>
                     Save
                 </button>
                 <h3>{this.props.lessonId}</h3>
@@ -43,7 +43,7 @@ const stateToPropertiesMapper = (state) => (
 const dispatchToPropertiesMapper =  dispatch => ({
     findAllWidgets: (lessonId) => findAllWidgets(dispatch, lessonId),
     addWidget: () => addWidget(dispatch),
-    save: () => save(dispatch)
+    save: (lessonId) => save(dispatch, lessonId)
 });
 
 export const App = connect(
