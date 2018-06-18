@@ -5,6 +5,7 @@ import * as actions from '../actions/index';
 
 import {HeadingContainer} from './Heading';
 import {ParagraphContainer} from "./Paragraph";
+import {ImageContainer} from "./Image";
 
 // ------------------------- List ---------------------- //
 
@@ -12,38 +13,7 @@ const List = () => (
     <h1>List</h1>
 );
 
-const Image = ({widget, preview, urlChanged}) => {
-    let inputElement
-    return(
-        <div>
-            <div className="input-group-prepend">
-                <span className="input-group-text" id="">URL:</span>
 
-
-                <input className="form-control"
-                    value={widget.url}
-                    onChange={() => urlChanged(widget.id, inputElement.value)}
-                    ref={node => inputElement = node}
-                />
-            </div>
-            <div className="input-group mb-3">
-                <div className="input-group-prepend">
-                    <span className="input-group-text" id="">Widget Name</span>
-                </div>
-
-                <input className="form-control"
-                    // onChange={() => headingTextChanged(widget.id, inputElement.value)}
-                       placeholder="Widget Name"
-                    // ref={node => inputElement = node}
-                />
-            </div>
-            <h2> Preview </h2>
-            {widget.url != undefined && <img src={widget.url} alt="Some image"/>}
-            {/*<img src="https://picsum.photos/200/300" alt="Some image"/>*/}
-        </div>
-    );
-
-};
 
 const Link = () => (
     <h1>Link</h1>
@@ -92,9 +62,9 @@ const Widget = ({widget, preview, dispatch}) => {
             </div>
             {widget.widgetType === "Heading" && <HeadingContainer widget={widget}/>}
             {widget.widgetType === "Paragraph" && <ParagraphContainer widget={widget}/>}
-            {widget.widgetType === "Image" && <Image/>}
-            {widget.widgetType === "List" && <List/>}
-            {widget.widgetType === "Link" && <Link/>}
+            {widget.widgetType === "Image" && <ImageContainer widget={widget}/>}
+            {widget.widgetType === "List" && <List widget={widget}/>}
+            {widget.widgetType === "Link" && <Link widget={widget}/>}
 
         </li>
     )
