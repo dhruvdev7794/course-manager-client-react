@@ -6,6 +6,7 @@ const Paragraph = ({widget, preview, paragraphTextChanged}) => {
     let inputElement;
     return(
         <div>
+            <h2>Paragraph Widget</h2>
             <div className="input-group mb-3">
                 <div className="input-group-prepend">
                     <span className="input-group-text">Text</span>

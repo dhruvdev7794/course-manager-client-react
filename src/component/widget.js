@@ -6,14 +6,8 @@ import * as actions from '../actions/index';
 import {HeadingContainer} from './Heading';
 import {ParagraphContainer} from "./Paragraph";
 import {ImageContainer} from "./Image";
-import {LinkContainer} from "./Link"
-
-// ------------------------- List ---------------------- //
-
-const List = () => (
-    <h1>List</h1>
-);
-
+import {LinkContainer} from "./Link";
+import {ListContainer} from "./List";
 
 // ----------------- Widget content --------------------//
 const Widget = ({widget, preview, dispatch}) => {
@@ -54,12 +48,11 @@ const Widget = ({widget, preview, dispatch}) => {
                     <option value="Image">Image</option>
                     <option value="Link">Link</option>
                 </select>
-                <h2> {widget.name} </h2>
             </div>
             {widget.widgetType === "Heading" && <HeadingContainer widget={widget}/>}
             {widget.widgetType === "Paragraph" && <ParagraphContainer widget={widget}/>}
             {widget.widgetType === "Image" && <ImageContainer widget={widget}/>}
-            {widget.widgetType === "List" && <List widget={widget}/>}
+            {widget.widgetType === "List" && <ListContainer widget={widget}/>}
             {widget.widgetType === "Link" && <LinkContainer widget={widget}/>}
 
         </li>

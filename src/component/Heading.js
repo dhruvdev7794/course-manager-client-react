@@ -8,6 +8,7 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
     return(
 
         <div>
+            <h2>Heading Widget</h2>
             <div hidden={preview}>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">

@@ -7,6 +7,7 @@ const Link = ({widget, preview, hrefChanged, headingTextChanged}) => {
     let linkTextElement;
     return(
         <div>
+            <h2>Link Widget</h2>
             <div className="input-group mb-3">
                 <div className="input-group-prepend">
                     <span className="input-group-text" id="">URL:</span>

@@ -6,6 +6,7 @@ const Image = ({widget, preview, urlChanged}) => {
     let inputElement;
     return(
         <div>
+            <h2>Image Widget</h2>
             <div className="input-group-prepend">
                 <span className="input-group-text" id="">URL:</span>
 
