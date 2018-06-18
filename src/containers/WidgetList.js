@@ -12,7 +12,7 @@ class widgetList extends Component{
     render(){
         return(
             <div>
-                <h1>
+                <h1 className="container-fluid">
                     Widget List {this.props.widgets.length}
                 </h1>
                 <button hidden={this.props.previewMode} onClick={() => {this.props.save(this.props.lessonId)}}>
@@ -21,7 +21,7 @@ class widgetList extends Component{
                 <button onClick={this.props.preview}>
                     Preview
                 </button>
-                <h3>{this.props.lessonId}</h3>
+                {/*<h3>{this.props.lessonId}</h3>*/}
                 <ul className="wbdv-no-list-marker">
                     {
                         this.props.widgets.map(widget => (

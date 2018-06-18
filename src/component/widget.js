@@ -1,5 +1,5 @@
 import React from 'react';
-import {DELETE_WIDGET, SELECT_WIDGET_TYPE} from "../constants";
+import {DELETE_WIDGET, SELECT_WIDGET_TYPE, MOVE_WIDGET_UP, MOVE_WIDGET_DOWN} from "../constants";
 import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 
@@ -8,7 +8,7 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
     let inputElement;
     return(
 
-        <div className="container-fluid">
+        <div>
             <div hidden={preview}>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
@@ -90,9 +90,25 @@ const Widget = ({widget, preview, dispatch}) => {
     return(
         <li key={widget.id}>
             <div hidden={preview}>
-                <button onClick={e => (
-                    dispatch({type:DELETE_WIDGET, id: widget.id})
-                )}> Delete </button>
+
+                <button className="float-right fa fa-close btn btn-danger"
+                        onClick={e => (
+                            dispatch({type:DELETE_WIDGET, id: widget.id})
+                        )}>
+
+                </button>
+
+                <button className="float-right fa fa-arrow-up btn btn-warning"
+                        onClick={event => (
+                            dispatch({type: MOVE_WIDGET_UP, widget: widget})
+                        )}>
+                </button>
+                <button className="float-right fa fa-arrow-down btn btn-warning"
+                        onClick={event => (
+                            dispatch({type: MOVE_WIDGET_DOWN, widget: widget})
+                        )}>
+                </button>
+
 
                 <select onChange={event => dispatch({
                     type: SELECT_WIDGET_TYPE,
@@ -106,6 +122,7 @@ const Widget = ({widget, preview, dispatch}) => {
                     <option value="Image">Image</option>
                     <option value="Link">Link</option>
                 </select>
+                <h2> Heading Widget </h2>
             </div>
             {widget.widgetType === "Heading" && <HeadingContainer widget={widget}/>}
             {widget.widgetType === "Paragraph" && <Paragraph/>}
