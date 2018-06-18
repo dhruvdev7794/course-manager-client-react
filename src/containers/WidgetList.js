@@ -6,7 +6,7 @@ import {addWidget,save, findAllWidgets} from "../actions";
 class widgetList extends Component{
     constructor(props){
         super(props);
-        this.props.findAllWidgets();
+        this.props.findAllWidgets(this.props.lessonId);
     }
 
     render(){
@@ -41,7 +41,7 @@ const stateToPropertiesMapper = (state) => (
 );
 
 const dispatchToPropertiesMapper =  dispatch => ({
-    findAllWidgets: (lessonId) => findAllWidgets(dispatch),
+    findAllWidgets: (lessonId) => findAllWidgets(dispatch, lessonId),
     addWidget: () => addWidget(dispatch),
     save: () => save(dispatch)
 });

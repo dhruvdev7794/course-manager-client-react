@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import {Provider, connect} from 'react-redux';
 import {createStore} from 'redux';
 import {widgetReducer} from "../reducers/widgetReducer"
-import {WidgetContainer} from "../component/widget";
-import {findAllWidgets, addWidget, save} from "../actions";
 import {App} from "./WidgetList";
 
 // Step 3: The store will take the reducer and

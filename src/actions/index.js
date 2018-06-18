@@ -1,7 +1,8 @@
 import {ADD_WIDGET, FIND_ALL_WIDGETS, SAVE} from "../constants";
 
-export const findAllWidgets = dispatch =>{
-    fetch("http://localhost:8080/api/widget")
+export const findAllWidgets = (dispatch, lessonId)=>{
+    console.log(lessonId);
+    fetch("http://localhost:8080/api/lesson/"+lessonId+"/widget")
         .then(response => (response.json()))
         .then(widgets => dispatch({
             type: FIND_ALL_WIDGETS,
