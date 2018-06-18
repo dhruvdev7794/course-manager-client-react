@@ -1,4 +1,4 @@
-import {ADD_WIDGET, FIND_ALL_WIDGETS, HEADING_SIZE_CHANGED, SAVE, HEADING_TEXT_CHANGED} from "../constants";
+import {ADD_WIDGET, FIND_ALL_WIDGETS, HEADING_SIZE_CHANGED, SAVE, HEADING_TEXT_CHANGED, PREVIEW} from "../constants";
 
 export const findAllWidgets = (dispatch, lessonId)=>{
     fetch("http://localhost:8080/api/lesson/"+lessonId+"/widget")
@@ -33,3 +33,7 @@ export const headingTextChanged = (dispatch, widgetId, newText) => {
         id: widgetId,
         text : newText})
 };
+
+export const preview = (dispatch) => {
+    dispatch({type: PREVIEW})
+}

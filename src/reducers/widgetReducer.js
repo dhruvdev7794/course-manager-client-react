@@ -5,12 +5,19 @@ import {
     HEADING_SIZE_CHANGED,
     SAVE,
     SELECT_WIDGET_TYPE,
-    HEADING_TEXT_CHANGED
+    HEADING_TEXT_CHANGED, PREVIEW
 } from "../constants";
 
 let autoIncroment = 3;
-export const widgetReducer = (state = {widgets: []}, action) => {
+export const widgetReducer = (state = {widgets: [], preview: false}, action) => {
+    let newState;
     switch (action.type){
+        case PREVIEW:
+            return {
+                widgets: state.widgets,
+                preview: !state.preview
+
+            };
         case HEADING_TEXT_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
@@ -52,9 +59,12 @@ export const widgetReducer = (state = {widgets: []}, action) => {
             });
             return state;
         case FIND_ALL_WIDGETS:
-            return{
-                widgets: action.widgets
-            };
+            newState = Object.assign({}, state);
+            newState.widgets = action.widgets;
+            return newState;
+            // return{
+            //     widgets: action.widgets,
+            // };
         case DELETE_WIDGET:
             return {
                 widgets : state.widgets.filter(widget => (
@@ -64,8 +74,13 @@ export const widgetReducer = (state = {widgets: []}, action) => {
             return {
                 widgets:[
                     ...state.widgets,
-                    { id: autoIncroment++, text: 'New widget',
-                    widgetType: "Paragraph"}
+                    {
+                        id: autoIncroment++,
+                        text: 'New widget',
+                        widgetType: "Heading",
+                        size: 1,
+                        name: "Heading widget"
+                    }
                 ]
             };
         default:
