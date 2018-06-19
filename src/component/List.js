@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from "../actions";
 
-const List = ({widget,preview, headingTextChanged}) => {
+const List = ({widget,preview, headingTextChanged, listTypeChanged}) => {
     let listInputElement;
     let listSelectElement;
 
@@ -25,36 +25,56 @@ const List = ({widget,preview, headingTextChanged}) => {
                         <span className="input-group-text">Select Order Type</span>
                     </div>
                     <select
+                        onChange={() => listTypeChanged(widget.id, listSelectElement.value)}
+                        value={widget.listType}
                         ref={node=> listSelectElement = node}>
-                        <option>Ordered List</option>
-                        <option>Unordered List</option>
+                        <option value="unordered">Unordered List</option>
+                        <option value="ordered">Ordered List</option>
                     </select>
                 </div>
                 <h2> Preview </h2>
             </div>
-            {covertToList(widget.text)}
+            {covertToListAndDisplay(widget.text, widget.listType)}
         </div>
     )
 
 };
 
-const covertToList = listText => {
+const covertToListAndDisplay = (listText, listType) => {
+    let  i = 0;
     var listArr = listText.split("\n");
-    var list = listArr.map(val => {
-        return(
-            <div>
-                <ul>
-                    <li>{val}</li>
-                </ul>
-            </div>
-        )
-    });
 
-    return list
+
+
+    if(listType === 'ordered'){
+            return(
+
+                    <ol>
+                        {/*<li key={obj.id}>{obj.val}</li>*/}
+                        {listArr.map(val => (
+                            <li key={i++}>{val}</li>
+                        ))}
+                    </ol>
+            )
+    }
+    else{
+
+            return(
+                    <ul>
+                        {listArr.map(val => (
+                            <li key={i++}>{val}</li>
+                        ))}
+                    </ul>
+            )
+
+    }
+
+
+    // return list
 };
 
 const dispatchToPropsMapper = dispatch => ({
-    // headingSizeChanged: (widgetId, newSize) => actions.headingSizeChanged(dispatch, widgetId, newSize),
+    listTypeChanged: (widgetId, type) => actions.listTypeChanged(dispatch, widgetId, type),
     headingTextChanged: (widgetId, newText) => actions.headingTextChanged(dispatch, widgetId, newText)
 });
 
