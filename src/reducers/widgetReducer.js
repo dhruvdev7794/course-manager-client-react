@@ -5,13 +5,18 @@ import {
     HEADING_SIZE_CHANGED,
     SAVE,
     SELECT_WIDGET_TYPE,
-    HEADING_TEXT_CHANGED, PREVIEW, CHANGE_URL_TEXT, CHANGE_HREF_TEXT, LIST_TYPE_CHANGED
+    HEADING_TEXT_CHANGED, PREVIEW, CHANGE_URL_TEXT, CHANGE_HREF_TEXT, LIST_TYPE_CHANGED, MOVE_WIDGET_UP
 } from "../constants";
 
 let autoIncroment = 3;
 export const widgetReducer = (state = {widgets: [], preview: false}, action) => {
     let newState;
     switch (action.type){
+        case MOVE_WIDGET_UP:
+            console.log(action);
+            console.log(state);
+
+            return state;
         case LIST_TYPE_CHANGED:
 
             return {
@@ -91,8 +96,10 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
             return state;
         case FIND_ALL_WIDGETS:
             newState = Object.assign({}, state);
-            newState.widgets = action.widgets;
-            return newState;
+            newState.widgets = action.widgets.sort(function(small, large){
+                return large-small
+            });
+            return newState
             // return{
             //     widgets: action.widgets,
             // };
@@ -113,7 +120,8 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                         name: '',
                         src:'',
                         href:'',
-                        listType:'unordered'
+                        listType:'unordered',
+                        widgetOrder: state.widgets.length+1
                     }
                 ]
             };

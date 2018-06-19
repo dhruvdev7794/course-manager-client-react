@@ -68,4 +68,4 @@ export const listTypeChanged = (dispatch, widgetId, listType) => {
         id: widgetId,
         listType: listType
     })
-}
+};
