@@ -11,10 +11,15 @@ import {
 export const findAllWidgets = (dispatch, lessonId)=>{
     fetch("http://localhost:8080/api/lesson/"+lessonId+"/widget")
         .then(response => (response.json()))
-        .then(widgets => dispatch({
-            type: FIND_ALL_WIDGETS,
-            widgets: widgets
-        }))
+        .then(widgets => {
+            widgets.sort(function (a, b) {
+                return a.widgetOrder - b.widgetOrder;
+            });
+            return dispatch({
+                type: FIND_ALL_WIDGETS,
+                widgets: widgets
+            })
+        })
 };
 
 export const addWidget = dispatch =>(

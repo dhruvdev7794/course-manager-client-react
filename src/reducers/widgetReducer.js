@@ -5,7 +5,13 @@ import {
     HEADING_SIZE_CHANGED,
     SAVE,
     SELECT_WIDGET_TYPE,
-    HEADING_TEXT_CHANGED, PREVIEW, CHANGE_URL_TEXT, CHANGE_HREF_TEXT, LIST_TYPE_CHANGED, MOVE_WIDGET_UP
+    HEADING_TEXT_CHANGED,
+    PREVIEW,
+    CHANGE_URL_TEXT,
+    CHANGE_HREF_TEXT,
+    LIST_TYPE_CHANGED,
+    MOVE_WIDGET_UP,
+    MOVE_WIDGET_DOWN
 } from "../constants";
 
 let autoIncroment = 3;
@@ -13,10 +19,51 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
     let newState;
     switch (action.type){
         case MOVE_WIDGET_UP:
-            console.log(action);
-            console.log(state);
+            var i = 0;
+            var allWidgets = state.widgets;
+            var newWidgets=[];
+            while(i<allWidgets.length){
+                if(allWidgets[i].id === action.widget.id && i!==0) {
 
-            return state;
+                    allWidgets[i].widgetOrder--;
+                    allWidgets[i - 1].widgetOrder++;
+
+                    var temp = allWidgets[i];
+                    newWidgets[i] = newWidgets[i-1];
+                    newWidgets[i-1] = temp;
+                }
+                else{
+                    newWidgets.push(allWidgets[i])
+                }
+                i++;
+            }
+            state.widgets = newWidgets;
+            return Object.assign({},state);
+        case MOVE_WIDGET_DOWN:
+            console.log(state);
+            var i = 0;
+            var allWidgets = state.widgets;
+            var newWidgets=[];
+            var len = allWidgets.length
+
+            while(i<allWidgets.length){
+                if(allWidgets[i].id === action.widget.id && i!=len-1){
+                    allWidgets[i].widgetOrder++;
+                    allWidgets[i+1].widgetOrder--;
+
+                    var temp = allWidgets[i];
+                    newWidgets[i] = allWidgets[i+1];
+                    newWidgets.push(temp);
+
+                    i++;
+                }
+                else{
+                    newWidgets.push(allWidgets[i]);
+                }
+                i++;
+            }
+            state.widgets = newWidgets
+            return Object.assign({},state);
         case LIST_TYPE_CHANGED:
 
             return {
@@ -38,9 +85,6 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
             };
 
         case CHANGE_URL_TEXT:
-            // console.log(action);
-            // console.log(state);
-            // return state;
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id){
@@ -86,6 +130,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
             };
             return JSON.parse(JSON.stringify(newState));
         case SAVE:
+            console.log(state.widgets);
             fetch("http://localhost:8080/api/lesson/"+action.lessonId+"/widget/save",{
                 method: 'post',
                 body: JSON.stringify(state.widgets),
@@ -96,13 +141,8 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
             return state;
         case FIND_ALL_WIDGETS:
             newState = Object.assign({}, state);
-            newState.widgets = action.widgets.sort(function(small, large){
-                return large-small
-            });
+            newState.widgets = action.widgets;
             return newState
-            // return{
-            //     widgets: action.widgets,
-            // };
         case DELETE_WIDGET:
             return {
                 widgets : state.widgets.filter(widget => (
