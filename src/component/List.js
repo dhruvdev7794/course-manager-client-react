@@ -2,10 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from "../actions";
 
-const List = ({widget,preview, headingTextChanged, listTypeChanged}) => {
+const List = ({widget,preview, headingTextChanged, listTypeChanged, nameChanged}) => {
     let listInputElement;
     let listSelectElement;
-
+    let nameElement;
     return(
         <div>
             <div hidden={preview}>
@@ -31,6 +31,17 @@ const List = ({widget,preview, headingTextChanged, listTypeChanged}) => {
                         <option value="unordered">Unordered List</option>
                         <option value="ordered">Ordered List</option>
                     </select>
+                </div>
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="">Widget Name</span>
+                    </div>
+
+                    <input className="form-control"
+                           onChange={() => nameChanged(widget.id, nameElement.value)}
+                           value={widget.name}
+                           ref={node => nameElement = node}
+                    />
                 </div>
                 <h2> Preview </h2>
             </div>
@@ -75,7 +86,8 @@ const covertToListAndDisplay = (listText, listType) => {
 
 const dispatchToPropsMapper = dispatch => ({
     listTypeChanged: (widgetId, type) => actions.listTypeChanged(dispatch, widgetId, type),
-    headingTextChanged: (widgetId, newText) => actions.headingTextChanged(dispatch, widgetId, newText)
+    headingTextChanged: (widgetId, newText) => actions.headingTextChanged(dispatch, widgetId, newText),
+    nameChanged: (widgetId, newText) => actions.nameChanged(dispatch, widgetId, newText)
 });
 
 const stateToPropsMapper = state => ({

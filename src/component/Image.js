@@ -2,8 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from "../actions";
 
-const Image = ({widget, preview, urlChanged}) => {
+const Image = ({widget, preview, urlChanged, nameChanged}) => {
     let inputElement;
+    let nameElement;
     return(
         <div>
             <div hidden={preview}>
@@ -24,9 +25,9 @@ const Image = ({widget, preview, urlChanged}) => {
                     </div>
 
                     <input className="form-control"
-                        // onChange={() => headingTextChanged(widget.id, inputElement.value)}
-                           placeholder="Widget Name"
-                        // ref={node => inputElement = node}
+                        onChange={() => nameChanged(widget.id, nameElement.value)}
+                        value={widget.name}
+                        ref={node => nameElement = node}
                     />
                 </div>
                 <h2> Preview </h2>
@@ -39,7 +40,8 @@ const Image = ({widget, preview, urlChanged}) => {
 };
 
 const dispatchToPropsMapper = dispatch => ({
-    urlChanged: (widgetId, urlText) => actions.urlChanged(dispatch, widgetId, urlText)
+    urlChanged: (widgetId, urlText) => actions.urlChanged(dispatch, widgetId, urlText),
+    nameChanged: (widgetId, urlText) => actions.nameChanged(dispatch, widgetId, urlText)
 });
 
 const stateToPropsMapper = state => ({

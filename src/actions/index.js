@@ -5,7 +5,7 @@ import {
     SAVE,
     HEADING_TEXT_CHANGED,
     PREVIEW,
-    CHANGE_URL_TEXT, CHANGE_HREF_TEXT, LIST_TYPE_CHANGED
+    CHANGE_URL_TEXT, CHANGE_HREF_TEXT, LIST_TYPE_CHANGED, NAME_CHANGED
 } from "../constants";
 
 export const findAllWidgets = (dispatch, lessonId)=>{
@@ -74,3 +74,11 @@ export const listTypeChanged = (dispatch, widgetId, listType) => {
         listType: listType
     })
 };
+
+export const nameChanged = (dispatch, widgetId, name) => {
+    dispatch({
+        type:NAME_CHANGED,
+        id: widgetId,
+        name: name
+    })
+}

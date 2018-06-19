@@ -2,9 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from "../actions";
 
-const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
+const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, nameChanged}) => {
     let selectElem;
     let inputElement;
+    let nameElement;
     return(
 
         <div>
@@ -40,9 +41,9 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
                     </div>
 
                     <input className="form-control"
-                        // value={widget.name}
-                        // onChange={() => headingTextChanged(widget.id, inputElement.value)}
-                        // ref={node => inputElement = node}
+                        value={widget.name}
+                        onChange={() => nameChanged(widget.id, nameElement.value)}
+                        ref={node => nameElement = node}
                     />
                 </div>
                 <h2> Preview </h2>
@@ -56,7 +57,8 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
 
 const dispatchToPropsMapper = dispatch => ({
     headingSizeChanged: (widgetId, newSize) => actions.headingSizeChanged(dispatch, widgetId, newSize),
-    headingTextChanged: (widgetId, newText) => actions.headingTextChanged(dispatch, widgetId, newText)
+    headingTextChanged: (widgetId, newText) => actions.headingTextChanged(dispatch, widgetId, newText),
+    nameChanged: (widgetId, newText) => actions.nameChanged(dispatch, widgetId, newText)
 });
 
 const stateToPropsMapper = state => ({

@@ -11,13 +11,23 @@ import {
     CHANGE_HREF_TEXT,
     LIST_TYPE_CHANGED,
     MOVE_WIDGET_UP,
-    MOVE_WIDGET_DOWN
+    MOVE_WIDGET_DOWN, NAME_CHANGED
 } from "../constants";
 
 let autoIncroment = 3;
 export const widgetReducer = (state = {widgets: [], preview: false}, action) => {
     let newState;
     switch (action.type){
+        case NAME_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id){
+                        widget.name = action.name;
+                    }
+                    return Object.assign({}, widget)
+                })
+            };
+            return state;
         case MOVE_WIDGET_UP:
             var i = 0;
             var allWidgets = state.widgets;
