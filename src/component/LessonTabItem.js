@@ -10,7 +10,7 @@ export default class LessonTabItem extends React.Component{
         return(
             <div>
                 <li className="nav-item">
-                    <NavLink activeStyle={{color:"#FFFFFF", backgroundColor:"#007bff"}} activeClassName={"active"}
+                    <NavLink activeStyle={{color:"#FFFFFF", backgroundColor:"#007bff"}} onClick={window.location.reload} activeClassName={"active"}
                         to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}/widget`}>
                             {this.props.title}
                     </NavLink>
