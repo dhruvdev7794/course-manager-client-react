@@ -22,14 +22,14 @@ class widgetList extends Component{
                     Preview
                 </button>
                 {/*<h3>{this.props.lessonId}</h3>*/}
-                <ul className="wbdv-no-list-marker">
+                <div className="wbdv-no-list-marker">
                     {
                         this.props.widgets.map(widget => (
                             <WidgetContainer widget={widget} key={widget.id}
                             preview={this.props.previewMode}/>
                         ))
                     }
-                </ul>
+                </div>
                 <button onClick={this.props.addWidget}> Add Widget
                 </button>
             </div>

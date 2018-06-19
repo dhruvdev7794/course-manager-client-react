@@ -4,11 +4,9 @@ import {createStore} from 'redux';
 import {widgetReducer} from "../reducers/widgetReducer"
 import {App} from "./WidgetList";
 
-// Step 3: The store will take the reducer and
-//         this store is being fed (at HTML render)
 let store = createStore(widgetReducer);
 
-export class WidgetDisplay extends Component{
+export class LessonEditor extends Component{
     constructor(props){
         super(props);
     }
@@ -26,15 +24,10 @@ export class WidgetDisplay extends Component{
     }
 
     render(){
-        if(this.state!=null){
             return(
-                <Provider store = {store}>
-                    <App lessonId={this.state.lessonId}/>
+                <Provider store={store}>
+                    <App lessonId={this.props.match.params.lessonId}/>
                 </Provider>
             )
-        }
-        else{
-            return (<p></p>)
-        }
     }
 }

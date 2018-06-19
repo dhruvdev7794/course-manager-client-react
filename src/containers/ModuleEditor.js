@@ -1,6 +1,6 @@
 import React from 'react';
 import LessonTab from "./LessonTab";
-import {WidgetDisplay} from './LessonEditor';
+import {LessonEditor} from './LessonEditor';
 import {Route} from 'react-router-dom'
 
 export default class ModuleEditor extends React.Component{
@@ -37,7 +37,7 @@ export default class ModuleEditor extends React.Component{
                     moduleId={this.state.moduleId}/>
                 <div>
                 <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId/widget"
-                        component={WidgetDisplay}>
+                        component={LessonEditor}>
                 </Route>
                 </div>
             </div>
